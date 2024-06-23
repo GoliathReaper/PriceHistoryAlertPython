@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+from telegram_notification import telegram_message
 
 
 class PriceCheck:
@@ -67,6 +68,7 @@ class PriceCheck:
                 print(f"Price: {price}")
                 if price <= self.max_price:
                     print("You can buy it!")
+                    telegram_message(f"Price: {price} is below set price {self.max_price} for {self.url}")
                 else:
                     print("Price is high")
 
